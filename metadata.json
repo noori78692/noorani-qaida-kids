@@ -1,0 +1,6 @@
+{
+  "name": "Noorani Qaida Kids",
+  "description": "Interactive Disney-quality Noorani Qaida educational app for kids featuring audio pronunciation, letter tracing, gamified lessons, voice practice, quizzes, and parent/teacher dashboards.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
