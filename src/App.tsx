@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   BookOpen,
@@ -41,6 +41,7 @@ import { ParentDashboard } from './components/ParentDashboard';
 import { TeacherDashboard } from './components/TeacherDashboard';
 import { MascotGuide } from './components/MascotGuide';
 import { soundFx, speakArabic } from './utils/audioSystem';
+import { useBackButton, type NavigationState, type NavigationSetters } from './hooks/useBackButton';
 
 const INITIAL_PROFILE: UserProfile = {
   name: 'Little Scholar',
@@ -101,6 +102,34 @@ export default function App() {
 
   // Alphabet search filter
   const [alphabetSearch, setAlphabetSearch] = useState('');
+
+  // Refs for Capacitor back button hook — avoids stale closures
+  const navStateRef = useRef<NavigationState>({
+    showVoiceModal,
+    showQuizModal,
+    showParentDashboard,
+    showTeacherDashboard,
+    selectedLessonId,
+  });
+
+  // Keep the ref in sync with actual state
+  useEffect(() => {
+    navStateRef.current = {
+      showVoiceModal,
+      showQuizModal,
+      showParentDashboard,
+      showTeacherDashboard,
+      selectedLessonId,
+    };
+  }, [showVoiceModal, showQuizModal, showParentDashboard, showTeacherDashboard, selectedLessonId]);
+
+  useBackButton(navStateRef, {
+    setShowVoiceModal,
+    setShowQuizModal,
+    setShowParentDashboard,
+    setShowTeacherDashboard,
+    setSelectedLessonId,
+  } satisfies NavigationSetters);
 
   const activeLesson: Lesson = ALL_LESSONS.find(l => l.id === selectedLessonId) || ALL_LESSONS[0];
 
