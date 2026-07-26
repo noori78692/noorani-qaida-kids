@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import {
   BookOpen,
   Sparkles,
@@ -13,7 +13,6 @@ import {
   VolumeX,
   Lock,
   Star,
-  CheckCircle2,
   Play,
   Grid,
   Edit3,
@@ -25,7 +24,6 @@ import {
   ChevronRight,
   ChevronLeft,
   Search,
-  Mic,
 } from 'lucide-react';
 
 import { UserProfile, Lesson, LetterItem } from './types';

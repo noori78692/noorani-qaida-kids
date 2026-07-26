@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Noorani Qaida Kids</string>
+    <string name="title_activity_main">Noorani Qaida Kids</string>
+    <string name="package_name">com.misbahi.noorani</string>
+    <string name="custom_url_scheme">com.misbahi.noorani</string>
+</resources>
